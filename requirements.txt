@@ -1,0 +1,7 @@
+requests>=2.31.0
+pypdf>=4.2.0
+Pillow>=10.0.0
+numpy>=1.26.0
+opencv-python>=4.9.0
+flask>=3.0.0
+Markdown>=3.6

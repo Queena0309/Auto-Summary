@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>摘要结果</title>
+  <style>
+    :root {
+      --bg:#eef3f7;
+      --card:#fff;
+      --ink:#17212b;
+      --sub:#566273;
+      --line:#d5dde6;
+      --brand:#0f766e;
+      --brand2:#2563eb;
+    }
+    * { box-sizing:border-box; }
+    body {
+      font-family: "Source Han Sans SC","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 380px at 90% -20%, #d9efe9 0%, transparent 65%),
+        linear-gradient(180deg,#f7fafc 0%, var(--bg) 100%);
+      padding:24px 16px;
+    }
+    .shell { max-width: 1040px; margin: 0 auto; }
+    .top { display:flex; gap:10px; margin-bottom:14px; }
+    .btn {
+      background:linear-gradient(180deg,#0f766e 0%,#0a5d57 100%);
+      color:#fff;
+      padding:8px 13px;
+      border-radius:10px;
+      text-decoration:none;
+      font-size:14px;
+      box-shadow:0 8px 20px rgba(10,93,87,.2);
+    }
+    .btn.secondary { background:linear-gradient(180deg,#2563eb 0%,#1d4ed8 100%); box-shadow:0 8px 20px rgba(37,99,235,.2);}
+    .meta { margin-bottom:14px; color:var(--sub); font-size:14px; }
+    .meta div { margin-bottom: 4px; }
+    .card {
+      background:var(--card);
+      border-radius:16px;
+      border:1px solid #e4eaf1;
+      padding:22px;
+      box-shadow:0 12px 36px rgba(18,44,67,.08);
+      animation: rise .32s ease;
+    }
+    @keyframes rise { from {opacity:.6; transform:translateY(8px);} to {opacity:1; transform:translateY(0);} }
+    .preview { margin-bottom:16px; }
+    .preview h3 { margin: 0 0 10px; font-size: 17px; }
+    .preview img { max-width:100%; border:1px solid var(--line); border-radius:10px; background:#fff; }
+    .markdown { line-height:1.72; font-size: 15px; }
+    .markdown h1,.markdown h2,.markdown h3 { margin-top:18px; margin-bottom: 8px; line-height:1.35; }
+    .markdown h1 { font-size: 24px; }
+    .markdown h2 { font-size: 19px; }
+    .markdown code { background:#f3f4f6; padding:1px 5px; border-radius:4px; }
+    .markdown blockquote {
+      margin:10px 0;
+      padding:8px 12px;
+      border-left:4px solid #9cc8c2;
+      color:#334155;
+      background:#f8fafc;
+      border-radius:6px;
+    }
+    @media (max-width:760px) {
+      .card { padding:16px; border-radius:12px; }
+      .markdown h1 { font-size: 20px; }
+      .markdown h2 { font-size: 17px; }
+      .top { flex-wrap:wrap; }
+    }
+    .footer-mark {
+      text-align:center;
+      margin-top: 16px;
+      color:#7b8795;
+      font-size: 13px;
+      letter-spacing:.4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+  <div class="top">
+    <a class="btn" href="/">继续上传</a>
+    <a class="btn secondary" href="/download/{{ data.token }}">下载 Markdown</a>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <div>Markdown: {{ data.markdown_name }}</div>
+      <div>Image: {{ data.image_name }}</div>
+      <div>Processed PDF: {{ data.processed_pdf_name }}</div>
+    </div>
+    <div class="preview">
+      <h3>框架图预览</h3>
+      <img src="/image/{{ data.image_name }}" alt="framework">
+    </div>
+    <div class="markdown">
+      {{ data.markdown_html|safe }}
+    </div>
+  </div>
+  <div class="footer-mark">NWPU Socia-AI Group</div>
+  </div>
+</body>
+</html>
