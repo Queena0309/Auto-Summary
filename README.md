@@ -80,6 +80,8 @@ export SUMMARY_USE_VLM_RERANK=1
 export SUMMARY_VLM_TOP_K=3
 ```
 
+说明：WebUI 默认按 `SUMMARY_USE_VLM_RERANK=1`（开启）运行以提升框架图选择准确率；如需优先速度可设为 `0`。
+
 ### 3) CLI 运行
 
 ```bash
